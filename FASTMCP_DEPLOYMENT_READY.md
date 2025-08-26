@@ -46,7 +46,7 @@ git push origin main
 
 ### Step 2: Deploy on Render
 
-**Your Render API Key:** `rnd_ZBPR5GZKf8JhMWH2245mbVZqEQiU`
+**Use your own Render API key from your dashboard**
 
 #### Render Deployment Process:
 
@@ -85,7 +85,7 @@ git push origin main
 **Zero-Risk Testing Strategy:**
 
 1. **Current System Protection**
-   - Your existing system `srv-d2l0623ipnbc73fmkb90` remains **UNTOUCHED**
+   - Your existing system `<your-current-system-id>` remains **UNTOUCHED**
    - No webhook changes until you're ready
    - Full rollback capability maintained
 
@@ -122,7 +122,7 @@ git push origin main
 ## 🔒 Zero-Risk Guarantee Details
 
 ### Current System Protection
-- **System ID:** `srv-d2l0623ipnbc73fmkb90`
+- **System ID:** `<your-current-system-id>`
 - **Status:** PROTECTED and OPERATIONAL
 - **Protocol:** REST API
 - **Impact:** ZERO (complete isolation)
@@ -194,7 +194,7 @@ logging.basicConfig(level=logging.INFO)
 
 ### Immediate Rollback Process
 1. Access Lark webhook settings
-2. Change URL back to: `srv-d2l0623ipnbc73fmkb90`
+2. Change URL back to: `<your-current-system-url>`
 3. Verify current system operational
 4. Total time: < 2 minutes
 

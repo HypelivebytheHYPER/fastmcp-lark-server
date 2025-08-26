@@ -77,7 +77,7 @@ This server uses the **MCP protocol** which is completely isolated from your exi
 
 ## Current System Protection
 
-Your existing system `srv-d2l0623ipnbc73fmkb90` remains:
+Your existing system `<your-current-system-id>` remains:
 - ✅ **PROTECTED** - No changes to existing system
 - ✅ **OPERATIONAL** - Continues to work normally
 - ✅ **ROLLBACK READY** - Instant switch back capability
