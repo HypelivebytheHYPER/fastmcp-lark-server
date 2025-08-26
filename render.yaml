@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: fastmcp-lark-server
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python fastmcp_async_lark.py
+    envVars:
+      - key: LARK_APP_ID
+        sync: false
+      - key: LARK_APP_SECRET
+        sync: false
+      - key: PORT
+        value: "8000"
+    healthCheckPath: /health
+    autoDeploy: true
+    repo: https://github.com/HypelivebytheHYPER/fastmcp-lark-server
+    branch: main
+    rootDir: .
+    buildFilter:
+      paths:
+        - "**"
+      ignoredPaths:
+        - ".git/**"
+        - "*.md"
+        - "tests/**"
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+    disk:
+      name: fastmcp-disk
+      size: 1GB
+      mountPath: /data
