@@ -103,6 +103,39 @@ mcp = FastMCP("Lark Server")
 token_manager = None
 
 @mcp.tool()
+async def health_check() -> Dict[str, Any]:
+    """
+    Health check endpoint for deployment monitoring
+    Returns server status and basic diagnostics
+    """
+    try:
+        # Check if token manager is initialized
+        manager_status = "initialized" if token_manager else "not_initialized"
+        
+        # Check environment variables (without exposing values)
+        env_check = {
+            "lark_app_id_set": bool(os.getenv('LARK_APP_ID')),
+            "lark_app_secret_set": bool(os.getenv('LARK_APP_SECRET'))
+        }
+        
+        return {
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "token_manager": manager_status,
+            "environment_variables": env_check,
+            "service": "fastmcp-lark-server",
+            "version": "1.0.0"
+        }
+    except Exception as e:
+        logger.error(f"Health check failed: {e}")
+        return {
+            "status": "unhealthy",
+            "timestamp": datetime.now().isoformat(),
+            "error": "Health check failed",
+            "service": "fastmcp-lark-server"
+        }
+
+@mcp.tool()
 async def send_message(
     receive_id: str,
     msg_type: str = "text",
